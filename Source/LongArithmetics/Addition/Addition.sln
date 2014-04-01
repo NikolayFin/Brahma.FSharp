@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AdditionBody", "Addition\AdditionBody.fsproj", "{5805052F-6089-445C-828A-AB91E16A4E02}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AdditionTest", "AdditionTest\AdditionTest.fsproj", "{5706311F-D5A6-4163-AFF6-E71ADC4C0405}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D65FC24B-340F-418D-B4BD-B33774F1072C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5805052F-6089-445C-828A-AB91E16A4E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5805052F-6089-445C-828A-AB91E16A4E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5805052F-6089-445C-828A-AB91E16A4E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5805052F-6089-445C-828A-AB91E16A4E02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5706311F-D5A6-4163-AFF6-E71ADC4C0405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5706311F-D5A6-4163-AFF6-E71ADC4C0405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5706311F-D5A6-4163-AFF6-E71ADC4C0405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5706311F-D5A6-4163-AFF6-E71ADC4C0405}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
