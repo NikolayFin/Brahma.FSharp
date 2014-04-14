@@ -34,19 +34,19 @@ let Main (array1:array<_>) (operation:array<_>) (array2:array<_>) (flag:array<_>
                 then 
                     c.[r] <- a.[r] + b.[r]
                 
-                    while !counter > 0 && !count do
+                    while !counter >= 0 && !count do
                         count := false
                         if !counter > 0 && c.[!counter] > 9 
                         then
                             count := true
                             c.[!counter] <!+ (-1 * 10)
                             c.[!counter - 1] <! c.[!counter - 1] + 1
+                        elif !counter = 0 && c.[!counter] > 9
+                        then
+                            c.[!counter] <!+ (-1 * 10)
+                            fl.[0] <! 1
                         counter := !counter - 1
 
-                    if c.[0] > 9
-                    then
-                        c.[0] <!+ (-1 * 10)
-                        fl.[0] <!+ (fl.[0] + 1)
                 if operation.[0] = -1
                 then 
                     c.[r] <- a.[r] - b.[r]
