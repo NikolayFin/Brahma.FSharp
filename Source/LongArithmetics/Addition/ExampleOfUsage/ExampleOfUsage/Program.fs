@@ -86,31 +86,31 @@ let Main arg =
         if n = 5
         then
             kernelPrepare d array2 array3 array1 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
             kernelPrepare d array3 array1 array2 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
             kernelPrepare d array1 array2 array3 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
         elif n = 4
         then
             kernelPrepare d array3 array1 array2 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
             kernelPrepare d array1 array2 array3 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
         elif n = 3
         then
             kernelPrepare d array1 array2 array3 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
         else
             fib (n - 3)
             kernelPrepare d array2 array3 array1 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
             kernelPrepare d array3 array1 array2 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
             kernelPrepare d array1 array2 array3 flag operation
-            //let _ = commandQueue.Add(kernelRun()).Finish()
-    
-    let _ = commandQueue.Add(kernelRun()).Finish()
+            let _ = commandQueue.Add(kernelRun()).Finish()
+    fib arg
+    //let _ = commandQueue.Add(kernelRun()).Finish()
     let _ = commandQueue.Add(array3.ToHost provider)
     let _ = commandQueue.Add(flag.ToHost provider)
 
