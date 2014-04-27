@@ -13,7 +13,7 @@ let Main (array1:array<_>) (operation:array<_>) (array2:array<_>) (flag:array<_>
 
     let platformName = "*"
     
-    let localWorkSize = 100
+    let localWorkSize = 1000
     let deviceType = DeviceType.Default
 
     let provider =
@@ -50,95 +50,24 @@ let Main (array1:array<_>) (operation:array<_>) (array2:array<_>) (flag:array<_>
                 if operation.[0] = -1
                 then 
                     c.[r] <- c.[r] + a.[r] - b.[r]
-
+                    
                     while !counter >= 0 && !count do
                         count := false
+                        
                         if !counter > 0 && c.[!counter] < 0 
                         then
+                            
                             count := true
-                            c.[!counter] <!+ (10)
+                            c.[!counter] <! c.[!counter] + 10
                             c.[!counter - 1] <! c.[!counter - 1] - 1
+                            
                         elif !counter = 0 && c.[!counter] < 0
                         then
                             c.[!counter] <!+ 10
                             fl.[0] <! -1
                         counter := !counter - 1
+                        barrier()
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-               (* if a.[0] = b.[0]
-                then
-                    if r > 0
-                    then
-                        c.[r] <- a.[r] + b.[r]
-                        //добавить цикл
-                       (* while !counter > 0 && !count do
-                            count := false
-                            if !counter > 1 && c.[!counter] > 9 
-                            then
-                                count := true
-                                c.[!counter] <!+ (-1 * 10)
-                                c.[!counter - 1] <! c.[!counter - 1] + 1
-                            counter := !counter - 1
-                       на хосте смотреть
-                        
-                        if c.[1] > 9
-                        then 
-                            fl.[0] <! 1
-                            c.[1] <!+ -10*)
-                    else c.[r] <- a.[r]
-                //else тут должен быть блок обработки суммы чисел с разными знаками
-                else 
-                    if r > 0
-                    then
-                        c.[r] <- a.[r] - b.[r]
-                      (*  while !counter > 0 && !count do
-                            count := false
-                            if !counter > 1 && c.[!counter] < 0
-                            then
-                                count := true
-                                c.[!counter] <!+ 10
-                                c.[!counter - 1] <! (c.[!counter - 1] - 1)
-                            counter := !counter - 1*)
-                    else c.[r] <- a.[r]
-
-                if a.[0] = b.[0]
-                then
-                    while !counter > 1 && !count do
-                            count := false
-                            if !counter > 1 && c.[!counter] > 9 
-                            then
-                                count := true
-                                c.[!counter] <!+ (-1 * 10)
-                                c.[!counter - 1] <! c.[!counter - 1] + 1
-                            counter := !counter - 1
-                        
-                    if c.[1] > 9
-                    then 
-                        fl.[0] <! 1
-                        c.[1] <!+ -10
-                else
-                    while !counter > 0 && !count do
-                        count := false
-                        if !counter > 1 && c.[!counter] < 0
-                        then
-                            count := true
-                            c.[!counter] <!+ 10
-                            c.[!counter - 1] <! (c.[!counter - 1] - 1)
-                        counter := !counter - 1*)
         @>
 
     let kernel, kernelPrepare, kernelRun = provider.Compile command
