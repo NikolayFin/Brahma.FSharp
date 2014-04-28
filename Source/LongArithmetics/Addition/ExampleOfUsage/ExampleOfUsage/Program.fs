@@ -17,6 +17,7 @@ let Main arg =
 
     array1.[9999] <- 1
     array2.[9999] <- 1
+    array3.[9999] <- 1
 
     let platformName = "*"
     
@@ -28,7 +29,7 @@ let Main arg =
         with 
         | ex -> failwith ex.Message
 
-    let mutable commandQueue = new CommandQueue(provider, provider.Devices |> Seq.head)    
+    let commandQueue = new CommandQueue(provider, provider.Devices |> Seq.head)    
 
     let command = 
         <@
@@ -80,43 +81,52 @@ let Main arg =
     
     kernelPrepare d array1 array2 array3 flag operation
     
-    let _ = commandQueue.Add(kernelRun()).Finish()
+    //kernelRun()//.Finish()
     
     let rec fib n =
         if n = 5
         then
             kernelPrepare d array2 array3 array1 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
             kernelPrepare d array3 array1 array2 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
             kernelPrepare d array1 array2 array3 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
         elif n = 4
         then
             kernelPrepare d array3 array1 array2 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
             kernelPrepare d array1 array2 array3 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
         elif n = 3
         then
             kernelPrepare d array1 array2 array3 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
         else
             fib (n - 3)
             kernelPrepare d array2 array3 array1 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
             kernelPrepare d array3 array1 array2 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
             kernelPrepare d array1 array2 array3 flag operation
-            let _ = commandQueue.Add(kernelRun()).Finish()
+            commandQueue.Add(kernelRun()).Finish()
+            ()
     fib arg
     //let _ = commandQueue.Add(kernelRun()).Finish()
-    let _ = commandQueue.Add(array3.ToHost provider)
-    let _ = commandQueue.Add(flag.ToHost provider)
+    let _= commandQueue.Add(array3.ToHost provider)
+    let _= commandQueue.Add(flag.ToHost provider)
 
     commandQueue.Dispose()
     provider.Dispose()
     provider.CloseAllBuffers()
-    array3.[9998]
     
-printfn "%A" (Main 10) // возвращение целочисленного кода выхода
+    
+Main 5000 // возвращение целочисленного кода выхода
